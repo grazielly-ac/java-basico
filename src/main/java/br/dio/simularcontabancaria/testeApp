@@ -1,0 +1,14 @@
+ ContaBancariaServiceImpl conta = new ContaBancariaServiceImpl();
+        //ContaBancaria contaTransferir = new ContaBancaria();
+        ContaBancariaServiceImpl contaDois = new ContaBancariaServiceImpl();
+
+
+        conta.imprimirSaldo();
+        conta.realizarDeposito();
+        conta.realizarTransferenciaSaldo(contaDois);
+        conta.imprimirSaldo();
+
+        contaDois.imprimirSaldo();
+        contaDois.realizarSaque();
+        contaDois.imprimirSaldo();
+

@@ -1,0 +1,28 @@
+       Cliente joao = new Cliente();
+        joao.setNome("João Avelino");
+        ContaCorrente contaC = new ContaCorrente(joao);
+
+        Cliente pedro = new Cliente();
+        pedro.setNome("Pedro de Sousa");
+        ContaPoupanca contaPoupanca = new ContaPoupanca(pedro);
+
+        ContaService contaCorrente = new ContaService(contaC);
+        contaCorrente.depositarValores("1000,00");
+        contaCorrente.extratoConta();
+        contaCorrente.sacarValores("200,00");
+        contaCorrente.extratoConta();
+
+        ContaService contaP = new ContaService(contaPoupanca);
+        contaP.depositarValores("8000.00");
+        contaP.extratoConta();
+        contaP.sacarValores("400.00");
+        contaP.extratoConta();
+        contaP.transferirValores("9000,00", contaC);
+
+        contaCorrente.extratoConta();
+
+        BancoService banco = new BancoService();
+        banco.adicionarContaBanco(contaPoupanca);
+        banco.adicionarContaBanco(contaC);
+        System.out.println("Lista de contas: ");
+        banco.listarContas();

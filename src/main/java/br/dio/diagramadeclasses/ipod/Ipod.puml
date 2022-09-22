@@ -1,0 +1,76 @@
+@startuml
+interface br.dio.diagramadeclasses.ipod.service.AlbumService {
+}
+class br.dio.diagramadeclasses.ipod.model.Musicas {
+- String nome
+- LocalTime duracao
++ String getNome()
++ LocalTime getDuracao()
++ String toString()
+}
+interface br.dio.diagramadeclasses.ipod.repository.AlbumRepository {
+~ Album addItens()
+~ void imprimirAlbums()
+~ void selecionarItem()
+~ String playMusica()
+}
+enum br.dio.diagramadeclasses.ipod.model.Genero {
++  HEAVY_METAL
++  COUNTRY
++  FORRÓ
++  REGGAE
++  ELETRÔNICA
++  BLUES
++  POP
++  SOUL
++  ROCK
++  HIP_HOP
++  MPB
++  JAZZ
+- String nome
++ String toString()
+}
+class br.dio.diagramadeclasses.ipod.Ipod {
+- {static} AlbumServiceImpl album
+- {static} void adicionarMusicas()
+- {static} void imprimirAlbum()
+- {static} void selecionarMusica()
+- {static} void controleIpodMusica()
++ {static} void acessoIpod()
+}
+class br.dio.diagramadeclasses.Iphone {
++ {static} void main(String[])
+}
+class br.dio.diagramadeclasses.ipod.service.impl.AlbumServiceImpl {
+- Album album
+- boolean entrada
+- String mostrarMusica
+- StringBuffer nomeMusica
++ String getMostrarMusica()
++ void setMostrarMusica(String)
+- boolean isEntrada()
+- void setEntrada(boolean)
++ Album addItens()
++ void imprimirAlbums()
++ void selecionarItem()
+- String tocarMusica(String)
++ String playMusica()
+}
+class br.dio.diagramadeclasses.ipod.model.Album {
+- String nome
+- Genero genero
+- String artista
+- int anoCriacao
+- Set<Musicas> musicas
+- Map<String,Set<Musicas>> albumInfo
++ Set<Musicas> getMusicas()
++ Map<String,Set<Musicas>> getAlbumInfo()
++ Set<Musicas> addMusicas(String,LocalTime)
++ Map<String,Set<Musicas>> addAlbum()
++ String toString()
+}
+
+
+br.dio.diagramadeclasses.ipod.repository.AlbumRepository <|-- br.dio.diagramadeclasses.ipod.service.AlbumService
+br.dio.diagramadeclasses.ipod.service.AlbumService <|.. br.dio.diagramadeclasses.ipod.service.impl.AlbumServiceImpl
+@enduml
